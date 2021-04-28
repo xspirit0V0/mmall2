@@ -1,0 +1,35 @@
+spring:
+#  连接数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/mmall?serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#   druid数据库连接池 开启防火墙
+    druid:
+      aop-patterns: springwork.demo.*
+      filters: stat,wall
+#   druid数据库连接池默认登录名称admin
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: admin
+#     静态资源解析
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filter:
+        stat:
+          slow-sql-millis: 1000
+          log-slow-sql: true
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
+#      mybatisplus 相关配置,配置代码构造器
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-enums-package: com.xspirit.mmall.enums

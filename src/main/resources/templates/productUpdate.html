@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common.html :: source"></th:block>
+    <script type="text/javascript" src="/js/productUpdate.js"></script>
+</head>
+<body>
+<div>
+    <div class="soubg">
+        <div class="sou">
+            <span class="fr">
+            <span class="fl" th:if="${session.user == null }">你好，请<a th:href="@{/login.html}" style="color:#ff4e00;">登录</a>&nbsp;<a href="/register" style="color:#ff4e00;">免费注册</a>&nbsp;&nbsp;</span>
+            <span class="fl" th:if="${session.user != null}"><a href="/user/userInfo" >欢迎回来，<span th:text="${session.user.userName}"></span></a>&nbsp;|&nbsp;
+                <a th:if="${session.user.loginName} ne 'admin'" href="/orders/list">我的订单</a>&nbsp;
+                <a th:if="${session.user.loginName} eq 'admin'" href="/product/findAllProduct" style="margin-right: 25px;">商品更新</a>
+            </span>
+            <span class="fl" th:if="${session.user != null}">|&nbsp;<a th:href="@{/user/logout}">注销</a></span>
+        </span>
+        </div>
+    </div>
+    <div id="fade1" class="black_overlay"></div>
+    <div id="MyDiv1" class="white_content">
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="/images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
+                    <tr valign="top">
+                        <td width="40"><img src="/images/suc.png"></td>
+                        <td>
+                            <span style="color:#3e3e3e; font-size:18px; font-weight:bold;" id="showMessage">操作成功</span><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="m_left" style="margin-top: 110px;">
+    <div class="left_n">管理中心</div>
+    <div class="left_m">
+        <div class="left_m_t t_bg2">会员中心</div>
+        <ul>
+            <li><a href="/user/userInfo" >管理员信息</a></li>
+            <li><a href="#">商品更新</a></li>
+            <li><a href="/user/alluser">用户管理</a></li>
+            <li><a href="/">回到首页</a></li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <form class="p_sch" action="/product/findOneProduct" method="post">
+        <input type="text" value="" name="productsname" class="p_text">
+        <input type="submit" value="搜索" class="p_btn">
+    </form>
+</div>
+
+<div class="m_right" id="content">
+    <p></p>
+    <p></p>
+    <div class="mem_tit">商品列表</div>
+    <table border="0" class="order_tab"
+           style="width: 930px; text-align: center; margin-bottom: 30px;"
+           cellspacing="0" cellpadding="0">
+        <tbody>
+
+        <div>
+            <tr>
+                <td colspan="4">
+                    <table border="0" class="order_tab"
+                           style="width: 930px; text-align: center; margin-bottom: 30px;"
+                           cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td width="20%">商品名称</td>
+                            <td width="20%">商品图片</td>
+                            <td width="25%">库存</td>
+                            <td width="25%">单价</td>
+                        </tr>
+                        <tr th:each="one:${onelist}">
+                            <td th:text="${one.name}" class="p_name"></td>
+                            <td>
+                                <img th:src="'/images/'+${one.fileName}" width="50"
+                                     height="50">
+                            </td>
+                            <td align="center">
+                                <div style="margin-left: 85px">
+                                    <input type="hidden" th:value="${one.id}" class="p_id">
+                                    <input type="button" value="" class="car_btn_1" onclick="subProduct(this)">
+                                    <input type="text" th:value="${one.stock}" name="stock" class="car_ipt"  readonly="readonly">
+                                    <input type="button" value="" class="car_btn_2" onclick="addProduct(this)">
+                                </div>
+                            </td>
+                            <td th:text=" '￥'+${one.price}"></td>
+                        </tr>
+
+                        <tr th:each="all:${alllist}">
+                            <td th:text="${all.name}" class="p_name"></td>
+                            <td>
+                                <img th:src="'/images/'+${all.fileName}" width="50"
+                                     height="50">
+                            </td>
+                            <td align="center">
+                                <div style="margin-left: 85px">
+                                    <input type="hidden" th:value="${all.id}" class="p_id">
+                                    <input type="button" value="" class="car_btn_1" onclick="subProduct(this)">
+                                    <input type="text" th:value="${all.stock}" name="stock" class="car_ipt"  readonly="readonly">
+                                    <input type="button" value="" class="car_btn_2" onclick="addProduct(this)">
+                                </div>
+                            </td>
+                            <td th:text=" '￥'+${all.price}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

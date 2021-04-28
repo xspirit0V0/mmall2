@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common.html :: source"></th:block>
+    <script type="text/javascript" src="/js/userUpdate.js"></script>
+</head>
+<body>
+
+<div>
+    <div class="soubg">
+        <div class="sou">
+            <span class="fr">
+            <span class="fl" th:if="${session.user == null }">你好，请<a th:href="@{/login.html}" style="color:#ff4e00;">登录</a>&nbsp;<a href="/register" style="color:#ff4e00;">免费注册</a>&nbsp;&nbsp;</span>
+            <span class="fl" th:if="${session.user != null}"><a href="/user/userInfo" >欢迎回来，<span th:text="${session.user.userName}"></span></a>&nbsp;|&nbsp;
+                <a th:if="${session.user.loginName} ne 'admin'" href="/orders/list">我的订单</a>&nbsp;
+                <a th:if="${session.user.loginName} eq 'admin'" href="/product/findAllProduct" style="margin-right: 25px;">商品更新</a>
+            </span>
+            <span class="fl" th:if="${session.user != null}">|&nbsp;<a th:href="@{/user/logout}">注销</a></span>
+        </span>
+        </div>
+    </div>
+    <div id="fade1" class="black_overlay"></div>
+    <div id="MyDiv1" class="white_content">
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="/images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
+                    <tr valign="top">
+                        <td width="40"><img src="/images/suc.png"></td>
+                        <td>
+                            <span style="color:#3e3e3e; font-size:18px; font-weight:bold;" id="showMessage">操作成功</span><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="m_left">
+    <div class="left_n">管理中心</div>
+    <div class="left_m">
+        <div class="left_m_t t_bg2">会员中心</div>
+        <ul>
+            <li><a href="/user/userInfo" >管理员信息</a></li>
+            <li><a href="/product/findAllProduct">商品更新</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li><a href="/">回到首页</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="m_right" id="content">
+    <p></p>
+    <p></p>
+    <div class="mem_tit">用户列表</div>
+    <table border="0" class="order_tab"
+           style="width: 930px; text-align: center; margin-bottom: 30px;"
+           cellspacing="0" cellpadding="0">
+        <tbody>
+
+        <div>
+            <tr>
+                <td colspan="4">
+                    <table border="0" class="order_tab"
+                           style="width: 930px; text-align: center; margin-bottom: 30px;"
+                           cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td width="15%">登陆名称</td>
+                            <td width="15%">用户名称</td>
+                            <td width="10%">性别</td>
+                            <td width="25%">邮箱</td>
+                            <td width="25%">手机</td>
+                            <td width="10%">操作</td>
+                        </tr>
+
+                        <tr th:each="userall:${users}">
+                            <td th:text="${userall.loginName}" class="p_name"></td>
+                            <td th:text="${userall.userName}"></td>
+                            <td th:text="${userall.gender.value}"></td>
+                            <td th:text="${userall.email}"></td>
+                            <td th:text="${userall.mobile}"></td>
+                            <td>
+                                <input type="hidden" class="u_id" value=""/>
+                                <a href="javascript:void(0);" class="u_del" onclick="removeUser(this)">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
