@@ -16,7 +16,8 @@
             <span class="fl" th:if="${session.user == null }">你好，请<a th:href="@{/login.html}" style="color:#ff4e00;">登录</a>&nbsp;<a href="/register" style="color:#ff4e00;">免费注册</a>&nbsp;&nbsp;</span>
             <span class="fl" th:if="${session.user != null}"><a href="/user/userInfo" >欢迎回来，<span th:text="${session.user.userName}"></span></a>&nbsp;|&nbsp;
                 <a th:if="${session.user.loginName} ne 'admin'" href="/orders/list">我的订单</a>&nbsp;
-                <a th:if="${session.user.loginName} eq 'admin'" href="/product/findAllProduct" style="margin-right: 25px;">商品更新</a>
+                <a th:if="${session.user.loginName} eq 'admin'" href="/product/findAllProduct">商品更新</a>
+                <a th:if="${session.user.loginName} eq 'admin'" href="/user/alluser" style="margin-right: 25px;">用户管理</a>
             </span>
             <span class="fl" th:if="${session.user != null}">|&nbsp;<a th:href="@{/user/logout}">注销</a></span>
         </span>
