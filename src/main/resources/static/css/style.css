@@ -6005,5 +6005,13 @@ ul.pay li.checked .ch_img {
     margin-left: 150px;
     margin-top: 50px;
 }
+.ps_table{
+    width: 310px;
+    height: 55px;
+    text-align: center;
+    border-bottom: 1px solid #92B8B1;
+    font-size: large;
+    font-family: "Microsoft YaHei";
+}
 
 

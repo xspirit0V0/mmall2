@@ -10,5 +10,4 @@ import com.xspirit.mmall.entity.User;
  *
  */
 public interface UserService extends IService<User> {
-
 }
