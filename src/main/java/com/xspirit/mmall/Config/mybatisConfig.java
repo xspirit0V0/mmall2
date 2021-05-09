@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class mybatisConfig {
 
+//    配置mybatisplus并开启
     @Bean
     public MybatisPlusInterceptor paginationInterceptor() {
         MybatisPlusInterceptor paginationInterceptor = new MybatisPlusInterceptor();
