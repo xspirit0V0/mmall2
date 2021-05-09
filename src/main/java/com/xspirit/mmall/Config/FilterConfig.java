@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
 
-//    自动装配bean
+//    配置过滤器 让客户端无法直接访问"/cart/*","/orders/*","/user/userInfo","/userAddress/*"几个地址请求
     @Bean
     public FilterRegistrationBean filterRegistrationBean(){
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
