@@ -92,7 +92,7 @@
                             <td th:text="${userall.email}"></td>
                             <td th:text="${userall.mobile}"></td>
                             <td>
-                                <input type="hidden" class="u_id" value=""/>
+                                <input type="hidden" class="u_id" th:value="${userall.id}"/>
                                 <a href="javascript:void(0);" class="u_del" onclick="removeUser(this)">删除</a>
                             </td>
                         </tr>
