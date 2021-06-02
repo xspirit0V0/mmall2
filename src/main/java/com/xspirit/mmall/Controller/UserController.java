@@ -111,18 +111,33 @@ public class UserController {
         modelAndView.addObject("users",userService.list());
         return modelAndView;
     }
+
     @PostMapping("/updateInformation/{id}")
     public String updataInformation(@PathVariable("id") Integer id,
                                     @RequestParam("userName") String userName,
                                     @RequestParam("email") String email,
                                     @RequestParam("mobile") String mobile){
-        User user = new User();
+        User user = userService.getById(id);
         user.setUserName(userName);
         user.setEmail(email);
         user.setMobile(mobile);
         userService.updateById(user);
         return "redirect:/user/alluser";
     }
+
+    @PostMapping("/updateInf/{id}")
+    public String updataInf(@PathVariable("id") Integer id,
+                                    @RequestParam("userName") String userName,
+                                    @RequestParam("email") String email,
+                                    @RequestParam("mobile") String mobile){
+        User user = userService.getById(id);
+        user.setUserName(userName);
+        user.setEmail(email);
+        user.setMobile(mobile);
+        userService.updateById(user);
+        return "redirect:/user/userInfo";
+    }
+
 
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable("id") Integer id){

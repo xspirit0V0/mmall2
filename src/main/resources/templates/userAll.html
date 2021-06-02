@@ -84,20 +84,20 @@
                             <td width="25%">手机</td>
                             <td width="10%">操作</td>
                         </tr>
-                        <form method="post">
                         <tr th:each="userall:${users}">
-                            <td th:text="${userall.loginName}" class="p_name"></td>
-                            <td><input type="text" th:value="${userall.userName}" name="userName"></td>
-                            <td th:text="${userall.gender.value}"></td>
-                            <td><input type="text" th:value="${userall.email}" name="email"></td>
-                            <td><input type="text" th:value="${userall.mobile}" name="mobile"></td>
-                            <td>
-                                <input type="hidden" class="u_id" th:value="${userall.id}"/>
-                                <a href="javascript:void(0);" class="u_upi" onclick="updateInformation(this)">修改</a>
-                                <a href="javascript:void(0);" class="u_del" onclick="removeUser(this)">删除</a>
-                            </td>
+                            <form method="post" th:action="'/user/updateInformation/'+${userall.id}">
+                                <td th:text="${userall.loginName}" class="p_name"></td>
+                                <td><input type="text" th:value="${userall.userName}" class="u_comm" name="userName"></td>
+                                <td th:text="${userall.gender.value}"></td>
+                                <td><input type="text" th:value="${userall.email}"  class="u_comm" name="email"></td>
+                                <td><input type="text" th:value="${userall.mobile}" class="u_comm" name="mobile"></td>
+                                <td>
+                                    <input type="hidden" class="u_id" th:value="${userall.id}"/>
+                                    <input type="submit" value="修改" class="u_cc"  >
+                                    <a href="javascript:void(0);" class="u_del" onclick="removeUser(this)">删除</a>
+                                </td>
+                            </form>
                         </tr>
-                        </form>
                         </tbody>
                     </table>
                 </td>

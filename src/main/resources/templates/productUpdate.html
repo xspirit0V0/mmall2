@@ -102,7 +102,13 @@
                                     <input type="button" value="" class="car_btn_2" onclick="addProduct(this)">
                                 </div>
                             </td>
-                            <td th:text=" '￥'+${one.price}"></td>
+                            <td>
+                                <form>
+                                    <span style="font-family:'Times New Roman'">￥</span>
+                                    <input  type="text"  name="price" th:value="${one.price}" class="p_pric" >
+                                    <a href="javascript:void(0)" class="p_upp" onclick="updatePrice(this)">修改</a>
+                                </form>
+                            </td>
                         </tr>
 
                         <tr th:each="all:${alllist}">
@@ -119,7 +125,13 @@
                                     <input type="button" value="" class="car_btn_2" onclick="addProduct(this)">
                                 </div>
                             </td>
-                            <td th:text=" '￥'+${all.price}"></td>
+                            <td>
+                                <form>
+                                    <span style="font-family:'Times New Roman'">￥</span>
+                                    <input  type="text"  name="price" th:value="${all.price}" class="p_pric" >
+                                    <a href="javascript:void(0)" class="p_upp" onclick="updatePrice(this)">修改</a>
+                                </form>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

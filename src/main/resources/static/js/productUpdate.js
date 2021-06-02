@@ -28,3 +28,14 @@ function subProduct(obj){
     })
     $(".car_ipt").eq(index).val(stock);
 }
+function updatePrice(obj){
+    var index =$(".p_upp").index(obj);
+    var price = parseFloat($(".p_pric").eq(index).val());
+    var id = parseInt($(".p_id").eq(index).val());
+    if (confirm("确认修改？")){
+        $.ajax({
+            type:"POST",
+            url:"/product/updatePrice/"+id+"/"+price
+        })
+    }
+}

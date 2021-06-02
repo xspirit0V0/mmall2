@@ -6020,4 +6020,25 @@ ul.pay li.checked .ch_img {
 .u_upi{
     color: deepskyblue;
 }
+.p_upp{
+    color: deepskyblue;
+}
+.p_pric{
+    border-style: none;
+    background-color: white;
+    width: 55px;
+}
+.u_comm{
+    text-align: center;
+    border-style: none;
+    background-color: white;
+}
+.u_cc{
+    border-style: none;
+    background-color: white;
+}
+.u_cc:hover{
+    cursor: pointer;
+    color: red;
+}
 

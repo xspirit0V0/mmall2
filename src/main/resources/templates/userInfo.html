@@ -53,16 +53,22 @@
                     <tr valign="top">
                         <td width="115"><img th:src="'/images/'+${session.user.fileName}" width="90" height="90" /></td>
                         <td>
-                            <div class="m_user" th:text="${session.user.userName}"></div><br />
+                            <form method="post" th:action="'/user/updateInf/'+${session.user.id}">
+                            <div class="m_user">
+                                <input name="userName" type="text" th:value="${session.user.userName}" style="border-style: none;background-color: white">
+                            </div>
+                            <br />
                             <p>
                                 性别:
                                 <span th:text="${session.user.gender.value}"></span>
                                 <br /><br />
                                 邮箱:
-                                <span th:text="${session.user.email}"></span><br /><br/>
+                                <span><input name="email" type="text" th:value="${session.user.email}"  style="border-style: none;background-color: white"></span><br /><br/>
                                 电话:
-                                <span th:text="${session.user.mobile}"></span><br /><br/>
+                                <span><input name="mobile" type="text" th:value="${session.user.mobile}"  style="border-style: none;background-color: white"></span><br /><br/>
+                                <input type="submit" value="修改" class="u_cc">
                             </p>
+                            </form>
                         </td>
                     </tr>
                 </table>

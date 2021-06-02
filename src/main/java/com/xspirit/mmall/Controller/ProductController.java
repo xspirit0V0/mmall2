@@ -120,6 +120,14 @@ public class ProductController {
             return "fail";
         }
     }
+    @PostMapping("/updatePrice/{id}/{price}")
+    public String updatePrice(@PathVariable("id") Integer id,
+                              @PathVariable("price") Float price){
+        Product product = productService.getById(id);
+        product.setPrice(price);
+        boolean b = productService.updateById(product);
+        return "redirect:/product/findAllProduct";
+    }
 
     @PostMapping("/findOneProduct")
     public ModelAndView findOneProduct(String productsname){
