@@ -11,10 +11,7 @@ import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.jws.WebParam;
@@ -113,6 +110,18 @@ public class UserController {
         modelAndView.setViewName("userAll");
         modelAndView.addObject("users",userService.list());
         return modelAndView;
+    }
+    @PostMapping("/updateInformation/{id}")
+    public String updataInformation(@PathVariable("id") Integer id,
+                                    @RequestParam("userName") String userName,
+                                    @RequestParam("email") String email,
+                                    @RequestParam("mobile") String mobile){
+        User user = new User();
+        user.setUserName(userName);
+        user.setEmail(email);
+        user.setMobile(mobile);
+        userService.updateById(user);
+        return "redirect:/user/alluser";
     }
 
     @GetMapping("/deleteUser/{id}")

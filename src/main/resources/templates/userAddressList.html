@@ -58,7 +58,23 @@
                         <a th:href="'/userAddress/delete/'+${address.id}">删除</a>
                     </td>
                 </tr>
-
+                <form action="/userAddress/addone" method="post">
+                <tr>
+                    <td class="p_td" width="160">
+                        新地址
+                    </td>
+                    <td>
+                        <input type="hidden" th:value="${session.user.id}" name="userId">
+                        地址 <input type="text" value="" name="address" class="add_ipt">
+                    </td>
+                    <td>
+                        备注 <input type="text" value="" name="remark" class="add_ipt">
+                    </td>
+                    <td>
+                        <input type="submit" style="border-style: none;background-color: #F8F8F8" value="提交">
+                    </td>
+                </tr>
+                </form>
                 </tbody>
             </table>
         </div>

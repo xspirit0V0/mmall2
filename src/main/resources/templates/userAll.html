@@ -77,25 +77,27 @@
                            cellspacing="0" cellpadding="0">
                         <tbody>
                         <tr>
-                            <td width="15%">登陆名称</td>
+                            <td width="15%">登陆账户</td>
                             <td width="15%">用户名称</td>
                             <td width="10%">性别</td>
                             <td width="25%">邮箱</td>
                             <td width="25%">手机</td>
                             <td width="10%">操作</td>
                         </tr>
-
+                        <form method="post">
                         <tr th:each="userall:${users}">
                             <td th:text="${userall.loginName}" class="p_name"></td>
-                            <td th:text="${userall.userName}"></td>
+                            <td><input type="text" th:value="${userall.userName}" name="userName"></td>
                             <td th:text="${userall.gender.value}"></td>
-                            <td th:text="${userall.email}"></td>
-                            <td th:text="${userall.mobile}"></td>
+                            <td><input type="text" th:value="${userall.email}" name="email"></td>
+                            <td><input type="text" th:value="${userall.mobile}" name="mobile"></td>
                             <td>
                                 <input type="hidden" class="u_id" th:value="${userall.id}"/>
+                                <a href="javascript:void(0);" class="u_upi" onclick="updateInformation(this)">修改</a>
                                 <a href="javascript:void(0);" class="u_del" onclick="removeUser(this)">删除</a>
                             </td>
                         </tr>
+                        </form>
                         </tbody>
                     </table>
                 </td>

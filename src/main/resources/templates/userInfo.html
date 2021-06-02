@@ -53,15 +53,15 @@
                     <tr valign="top">
                         <td width="115"><img th:src="'/images/'+${session.user.fileName}" width="90" height="90" /></td>
                         <td>
-                            <div class="m_user" th:text="${session.user.userName}">张三</div><br />
+                            <div class="m_user" th:text="${session.user.userName}"></div><br />
                             <p>
                                 性别:
-                                <span th:text="${session.user.gender.value}">女</span>
+                                <span th:text="${session.user.gender.value}"></span>
                                 <br /><br />
                                 邮箱:
-                                <span th:text="${session.user.email}">123@163.com</span><br /><br />
+                                <span th:text="${session.user.email}"></span><br /><br/>
                                 电话:
-                                <span th:text="${session.user.mobile}">13678766787</span><br /><br />
+                                <span th:text="${session.user.mobile}"></span><br /><br/>
                             </p>
                         </td>
                     </tr>

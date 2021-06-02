@@ -6013,5 +6013,11 @@ ul.pay li.checked .ch_img {
     font-size: large;
     font-family: "Microsoft YaHei";
 }
-
+.f_input{
+    border-style: hidden;
+    background-color: #ffffff;
+}
+.u_upi{
+    color: deepskyblue;
+}
 
